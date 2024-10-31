@@ -1,76 +1,44 @@
-Chat Application README
-
-Overview
-
-This chat application consists of a server and client built in Java, allowing multiple users to connect and communicate in real-time. The server manages client connections, while clients can send and receive messages.
+Weather App
+This is a simple Java application that fetches and displays weather information and forecasts using the OpenWeatherMap API. The application features a graphical user interface (GUI) built with Swing, allowing users to input a location and retrieve current weather details, as well as a five-day forecast.
 
 Features
-
-- Multi-client Support : The server can handle multiple clients simultaneously.
-- User Identification : Each client must provide a unique alias upon connecting.
-- Broadcast Messaging : Messages sent by any client are broadcasted to all connected clients.
-- Graceful Exit : Clients can exit the chat using the "exit" command.
-
-Components
-
-Server
-
-- Class : ChatServer
-- Port :12345 (modifiable in the code)
-- Functionality :
-  - Accepts new client connections.
-  - Manages communication between clients.
-  - Handles user identification and broadcasting messages.
-
-Client
-
-- Class :ChatClient
-- Connection: Connects to the server at localhost:12345.
-- Functionality:
-  - Prompts the user for a name and sends it to the server.
-  - Listens for messages from the server and displays them.
-  - Allows the user to send messages to the server.
-
-Getting Started
-
+Current Weather Information: Displays temperature, humidity, wind speed, and weather conditions for a specified location.
+Five-Day Forecast: Shows the weather forecast for the next five days.
+Unit Selection: Users can choose between Celsius and Fahrenheit for temperature readings.
+Search History: Keeps a log of previously searched locations.
+Dynamic UI: Changes background and icons based on the time of day and weather conditions.
 Prerequisites
-
-- Java Development Kit (JDK) installed on your machine.
-- Basic understanding of Java programming.
-
-Running the Application
-
-1. Compile the Code:
-   Navigate to the directory containing the server and client packages and compile the code:
-     javac server/ChatServer.java client/ChatClient.java
-   
-2. Start the Server:
-   Open a terminal window and run the server:
-     java server.ChatServer
-   
-3. Start the Client:
-   Open one or more terminal windows (or instances) to run the client:
-     java client.ChatClient
-   
-4. Connecting:
-   - The client will prompt for a name. Enter your alias and press Enter.
-   - You can start sending messages. To exit, type "exit".
-
+Java Development Kit (JDK) 8 or later
+Internet connection (to fetch data from the OpenWeatherMap API)
+An API key from OpenWeatherMap (the default key is included in the code, but you should replace it with your own for production use).
+Installation
+Clone or download the repository to your local machine.
+Navigate to the project directory.
+Open the project in your preferred IDE (e.g., IntelliJ IDEA, Eclipse).
+Ensure you have the necessary libraries (like JSON) in your classpath. You may need to add a JSON library such as org.json if it's not already included in your project.
+Usage
+Compile and run the WeatherAppGUI class.
+Enter a location (city name) in the input box and click the "Search" button.
+The current weather information and five-day forecast will be displayed in the GUI.
 Code Structure
+Packages
+weatherapp: Contains the main application classes:
+WeatherAPI: Handles API requests to fetch weather data.
+SearchHistory: Manages the search history entries.
+WeatherAppGUI: The graphical user interface for the application.
+Important Classes
+WeatherAPI: Contains methods to retrieve current weather and forecast data from the OpenWeatherMap API.
 
-- ChatServer.java :Contains the server logic, including handling client connections and broadcasting messages.
-- ChatClient.java :Contains the client logic, handling user input and communication with the server.
+retrieveWeatherInfo(String location): Fetches current weather data for a given location.
+fetchForecastData(String location): Fetches the five-day weather forecast for a given location.
+SearchHistory: Represents a search entry, including the location and timestamp.
 
-Error Handling
+WeatherAppGUI: The main GUI class where the application components are initialized and event handling occurs.
 
-- The server and client include basic error handling for socket operations and user input validation.
-- Ensure that the server is running before starting any clients to avoid connection errors.
-
-Customization
-
-- You can change the networkPort variable in ChatServer.java to use a different port.
-- Modify the messaging logic to add additional features, such as private messaging or message history.
-
-License
-
-This application is open source. Feel free to modify and distribute as needed.
+Notes
+The application fetches data from the OpenWeatherMap API, so make sure your API key has sufficient quota for requests.
+The GUI layout is built using Java Swing's GridBagLayout for flexible component arrangement.
+The weather icon and background change dynamically based on the weather conditions and time of day.
+Troubleshooting
+If you encounter issues retrieving weather data, ensure your API key is valid and you have an active internet connection.
+Check for exceptions in the console for any runtime errors.
